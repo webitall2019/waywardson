@@ -1,13 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --color-primary: rgb(255 255 255);
+    --body-background-color: rgb(21, 23, 25);
+  }
+}
+html{
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-background-color);
+  color: var(--color-primary);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.container{
+  margin: 0 auto;
+
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #6B7280;
+ 
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #6B7280;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #6B7280;
+}
+/* navigation */
+
+/* @media screen and (max-width:769.9px) {
+  header nav{
+    background-color: #fff;
+    height: 50vh;
+
+  }
+} */
+
+.big-logo img{
+  object-fit: cover;
+  width: 100%;
+}
+
+.shape{
+  position: absolute;
+}
+.shape img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-card img:hover{
+  transition: ease transform .3s;  
+  transform: scale(1.2);
+}
+
+.social-list{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 700px;
+  flex-wrap: wrap;
+}
+
+.social-list li a{
+  width: 50px;
+  display: inline-block;
+  transition: ease transform .1s;
+
+}
+.social-list li{
+  margin: 10px;
+}
+.social-list li a:hover{
+
+  transform: scale(.9);
+}
+.social-list li a img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.bg-cta-blue:hover{
+  transition: ease all .2s;
+}
+footer a {
+  text-transform: capitalize;
+
+}
+
+footer a:hover{
+  color: #fff;
+}
+header a:hover{
+  transition: ease all .2s;
+  color: grey;
+}
+.merch-list li:hover .circle{
+  background-color: #6B7280;
+}
+
+@media screen and (min-width: 320px) and ((max-width: 424.9px)) {
+  footer nav a {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (min-width: 800px) {
+ 
+}
+@media screen and (min-width: 768px) {
+  .social-list li a{
+    width: 75px;
+  }
+  .social-list li{
+   margin: 0 45px;
+  }
+  .social-list li:first-child{
+    margin-left: 0;
+  }
+  .social-list li:last-child, .social-list li:nth-child(4) {
+    margin-right: 0;
+  }
+  .social-list li:nth-child(5), .social-list li:nth-child(6){
+    margin: 40px 45px 0 ;
+  }
+    .social-list li:first-child{
+    margin-left: 0;
+  }
+  .social-list li:last-child, .social-list li:nth-child(4) {
+    margin-right: 0;
+  }
+  .social-list li:nth-child(5), .social-list li:nth-child(6){
+    margin: 40px 45px 0 ;
+  }
+}
+@media screen and (min-width: 1400px) {
+
 }

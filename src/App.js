@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home.jsx";
+import Epk from "./pages/Epk.jsx";
+import Layout from "./components/Layout";
+import Merch from "./pages/Merch";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="/epk" element={<Epk />} />
+                    <Route path="/merch" element={<Merch />}></Route>
+                </Route>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

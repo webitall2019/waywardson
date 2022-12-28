@@ -1,0 +1,16 @@
+[{
+   "riders":[
+      {
+         "name":"someName",
+         "link":"someLink"
+      },
+      {
+         "name":"someName",
+         "link":"someLink"
+      },
+      {
+         "name":"someName",
+         "link":"someLink"
+      }
+   ]
+}]
