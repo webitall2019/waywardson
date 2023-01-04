@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import Popup from "reactjs-popup";
+import Shows from "../components/Shows";
+import Tunes from "../components/Tunes";
 import "reactjs-popup/dist/index.css";
 import SocialSection from "../components/SocialSection";
 import bigLogo from "../assets/img/logos/big-logo-2.svg";
@@ -10,7 +10,6 @@ import guiter from "../assets/img/Avatar-2.png";
 import bass from "../assets/img/Avatar-3.png";
 import drums from "../assets/img/Avatar-4.png";
 import shapeSmall from "../assets/img/combined-shape-2.svg";
-import shareIcon from "../assets/img/icons/share-icon.svg";
 import riderIcon from "../assets/img/icons/rider-icon.svg";
 import riderIcon2 from "../assets/img/icons/rider-icon-2.svg";
 import riderIcon3 from "../assets/img/icons/rider-icon-3.svg";
@@ -18,46 +17,13 @@ import riderIcon4 from "../assets/img/icons/rider-icon-4.svg";
 import riderIcon5 from "../assets/img/icons/rider-icon-5.svg";
 
 export default function Epk() {
-    // const [rider, setRider] = useState([]);
-
-    // const getApiData = () => {
-    //     fetch("../../DB.json").then((response) => {
-    //         console.log(response);
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     getApiData();
-    // }, []);
-
     let person = [
         { name: "Rick Jones", role: "Lead Vox/Keys", image: vox },
         { name: "James Roberts", role: "Guitar/Vox", image: guiter },
         { name: '"CB" Brown', role: "Bass/Vox", image: bass },
         { name: "Jeff Siegel", role: "Drums/Percussion", image: drums },
     ];
-    let showEvents = [
-        {
-            title: "VINTAGE 1889, FORT PAYNE",
-            describe:
-                "Wayward Son Black Friday Bash At Vintage !889! @ Vintage 1889, Fort Payne.",
-            date: "NOV 25 2022",
-            share: "https://www.facebook.com/dialog/share?href=https%3A%2F%2Fwaywardsonmusic.com%2Fevent%2F4907426%2F624876406%2Fwayward-son-live&app_id=286076425227&display=popup",
-        },
-        {
-            title: "STE. CHAPELLE WINERY, CALDWELL IDAHO",
-            describe:
-                "Wayward Son Live At St. Chapelle Winery @ Ste. Chapelle Winery, Caldwell Idaho.",
-            date: "AUG 21 2022",
-            share: "http://localhost:3000/epk/22222",
-        },
-        {
-            title: "COUNCIL",
-            describe: "Council Mountain Music Festival @ Council, Idaho.",
-            date: "AUG 19 2022",
-            share: "http://localhost:3000/epk/22222",
-        },
-    ];
+
     let riderList = [
         {
             riderName: "Production/Tech Rider",
@@ -85,7 +51,16 @@ export default function Epk() {
             icon: riderIcon5,
         },
     ];
-
+    const songs = [
+        {
+            songName: "WHY DO YOU LOVE ME SO GOOD",
+            author: "Rick Jones",
+        },
+        {
+            songName: "WHY DO YOU LOVE ME SO GOOD",
+            author: "Rick Jones",
+        },
+    ];
     return (
         <div>
             <div className="container px-4 mx-auto max-w-lg lg:max-w-4xl pt-10 lg:pt-16">
@@ -165,7 +140,7 @@ export default function Epk() {
                         {person.map((person, index) => {
                             return (
                                 <div
-                                    key={index}
+                                    key={index + Math.random() * 100}
                                     className="card bg-text-dark-grey rounded-lg w-full md:w-[48%] lg:w-1/3 max-w-lg text-center p-10"
                                 >
                                     <div className="img-wrap mb-6 md:mb-10">
@@ -190,84 +165,39 @@ export default function Epk() {
                     <img src={shapeSmall} alt="shape" className="w-full" />
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto px-4 mt-10" id="shows">
-                <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center mb-8">
-                    UPCOMING SHOWS
+            <Tunes songs={songs} />
+            <Shows />
+            <div className="text-center">
+                <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center my-10">
+                    RIDER & STAGE PLOT
                 </h2>
-                <div className="show-cards md:grid  md:grid-cols-3 gap-5 content-around">
-                    {showEvents.map((event, index) => {
-                        return (
-                            <div
-                                key={index + Math.random() * 100}
-                                className="card mb-4 md:mb-0 rounded-lg bg-card-background py-4 px-3 grid content-between min-h-[180px] md:min-h-[230px]"
+                <p className="text-lg md:text-xl text-text-white-contrast">
+                    For All Production, Stage, Tech & Travel Rider Info, Please
+                    Download Below.
+                </p>
+            </div>
+            <div className="riders-list w-full px-4 md:flex gap-6 lg:gap-10 justify-center flex-wrap mt-6">
+                {riderList.map((rider, index) => {
+                    return (
+                        <div
+                            key={index + Math.random() + 100}
+                            className="bg-card-background mb-4 md:mb-0 px-4 py-6 rounded-lg flex basis-[30%] flex-shrink-0 flex-col justify-between"
+                        >
+                            <img
+                                src={rider.icon}
+                                alt="icon"
+                                className="block w-10 h-10 mb-4"
+                            />
+                            <a
+                                href={rider.link}
+                                target="black"
+                                className="font-medium sm:text-lg md:text-xl underline hover:no-underline"
                             >
-                                <h2 className="font-medium text-lg lg:text-[22px]">
-                                    {event.title}
-                                </h2>
-                                <p className="text-text-white-contrast">
-                                    {event.describe}
-                                </p>
-
-                                <Popup
-                                    trigger={
-                                        <div className="card-footer flex items-center justify-between self-end text-[#8B8B8C]">
-                                            <span>{event.date}</span>
-                                            <div
-                                                onClick={() =>
-                                                    navigator.clipboard.writeText(
-                                                        event.share
-                                                    )
-                                                }
-                                            >
-                                                <img
-                                                    src={shareIcon}
-                                                    alt="icon"
-                                                />
-                                            </div>
-                                        </div>
-                                    }
-                                    position="right center"
-                                >
-                                    <div className="text-black">
-                                        Popup content here !!
-                                    </div>
-                                </Popup>
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className="text-center">
-                    <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center my-10">
-                        RIDER & STAGE PLOT
-                    </h2>
-                    <p className="text-lg md:text-xl text-text-white-contrast">
-                        For All Production, Stage, Tech & Travel Rider Info,
-                        Please Download Below.
-                    </p>
-                </div>
-                <div className="riders-list w-full px-4 md:flex gap-6 lg:gap-10 justify-center flex-wrap mt-6">
-                    {riderList.map((rider, index) => {
-                        return (
-                            <div
-                                key={index + Math.random() + 100}
-                                className="bg-card-background mb-4 md:mb-0 px-4 py-6 rounded-lg flex basis-[30%] flex-shrink-0 flex-col justify-between"
-                            >
-                                <img
-                                    src={rider.icon}
-                                    alt="icon"
-                                    className="block w-10 h-10 mb-4"
-                                />
-                                <a
-                                    href={rider.link}
-                                    target="black"
-                                    className="font-medium sm:text-lg md:text-xl underline hover:no-underline"
-                                >
-                                    {rider.riderName}
-                                </a>
-                            </div>
-                        );
-                    })}
-                </div>
+                                {rider.riderName}
+                            </a>
+                        </div>
+                    );
+                })}
             </div>
             <div className="pb-12 mt-24">
                 <div className="relative">

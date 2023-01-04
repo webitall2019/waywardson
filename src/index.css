@@ -115,7 +115,70 @@ header a:hover{
 .merch-list li:hover .circle{
   background-color: #6B7280;
 }
-
+a.active:not(footer a.active){
+  background-color: red;
+}
+/* audio player */
+.controller-title{
+  color: red;
+}
+.react-jinke-music-player-mobile-progress .rc-slider-handle, .react-jinke-music-player-mobile-progress .rc-slider-track{
+   background-color: red!important;
+}
+.react-jinke-music-player-main.light-theme svg{
+  color: red!important;
+}
+.react-jinke-music-player-main.light-theme .rc-switch-checked{
+  background-color: red!important;
+    border: 1px solid red;
+}
+.customPlayer{
+  color: red!important;
+ 
+}
+.react-jinke-music-player{
+  right: 0!important;
+  bottom:0!important;
+  transform: none!important;
+}
+.tunes .rhap_progress-indicator{
+  display: none;
+}
+.tunes .rhap_container{
+  background-color: transparent;
+}
+.tunes .rhap_time{
+  color: #8B8B8C;
+}
+.tunes .rhap_main-controls-button svg path{
+  color: #f0f8ffd9;
+}
+.tunes .rhap_main{
+  position: relative;
+}
+.tunes .rhap_controls-section{
+  position: absolute;
+  left: 0;
+  top: -50px;
+}
+.tunes .rhap_header  {
+  padding-left: 60px;
+}
+.tunes .rhap_progress-bar-show-download{
+  background-color: #8B8B8C;
+}
+.tunes .rhap_progress-bar{
+  height: 5px;
+  border-radius: 0;
+}
+.tunes .rhap_progress-filled{
+  border-radius: 0;
+  background-color: #25282C;
+  height: 5px;
+}
+.tunes .rhap_container{
+  box-shadow: none;
+}
 @media screen and (min-width: 320px) and ((max-width: 424.9px)) {
   footer nav a {
     display: block;

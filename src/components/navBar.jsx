@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import logo from "../assets/img/logo.svg";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -8,13 +8,22 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar(props) {
     let [state, setState] = useState(false);
-    const btnRef = useRef(null);
-    let closeMenu = () => {
-        let menuItems = document.querySelectorAll("header nav .mobile-menu a");
+
+    // const btnRef = useRef(null);
+    // let closeMenu = () => {
+    //     let menuItems = document.querySelectorAll("header nav .mobile-menu a");
+    // };
+    // closeMenu();
+    // const scrollToMyRef = () => {
+    //     window.scrollTo(0, showsRef.current.offsetHeight);
+    // };
+    const scrollElemHandler = () => {
+        console.log("click");
+        // scrollToMyRef();
     };
-    closeMenu();
+    console.log(props);
     return (
         <Disclosure as="nav" className="">
             {({ open }) => (
@@ -55,12 +64,14 @@ export default function Navbar() {
                                     >
                                         Contact
                                     </a>
-                                    <a
-                                        href="#shows"
+                                    <NavLink
+                                        onClick={scrollElemHandler}
+                                        // ref={showsRef}
+                                        to="/epk/#shows"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
                                     >
                                         Shows
-                                    </a>
+                                    </NavLink>
                                     <NavLink
                                         to="/epk"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
@@ -96,7 +107,7 @@ export default function Navbar() {
                                         />
                                     ) : (
                                         <Bars3Icon
-                                            ref={btnRef}
+                                            // ref={btnRef}
                                             onClick={() =>
                                                 setState(() => (state = !state))
                                             }

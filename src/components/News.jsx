@@ -3,8 +3,8 @@ import eventOne from "../assets/img/3-column cards/news-1.svg";
 import eventSecond from "../assets/img/3-column cards/news-2.svg";
 import eventThird from "../assets/img/3-column cards/news-3.svg";
 
-export default function News() {
-    let events = [
+const News = () => {
+    let newsList = [
         {
             text: "Garage Oil Spirits/American Badass Whiskey is now the official Sponsor of Wayward Son! We’re thrilled about this new endeavor, and can’t wait for y’all to try some for yourselves. Greasy, gritty, southern fried rock, blended with the ultra smooth taste of American Badass Whiskey.. What more could ya ask for?",
             picture: eventOne,
@@ -39,26 +39,26 @@ export default function News() {
             <div className="mt-20">
                 <div className="container px-4">
                     <div className="lg:flex gap-x-4 ">
-                        {events.map((event, index) => (
+                        {newsList.map((news, index) => (
                             <div
                                 key={index}
                                 className="max-w-xl mx-auto mt-16 lg:mb-0 rounded-lg bg-text-dark-grey p-6 pt-0 lg:flex-1 flex flex-col"
                             >
                                 <div className="img-wrap mx-auto text-center xl:w-[300px] h-[190px]">
                                     <img
-                                        src={event.picture}
+                                        src={news.picture}
                                         alt="event"
                                         className="max-w-xs  mx-auto -mt-12 w-full h-full"
                                     />
                                 </div>
                                 <div className="text-lg h-3/4 flex flex-col justify-between">
                                     <p className="description text-text-light-grey mb-4">
-                                        {event.text}
+                                        {news.text}
                                     </p>
                                     <p className="text-base font-medium">
-                                        {event.subTitle}
+                                        {news.subTitle}
                                         <span className="text-text-red ml-4">
-                                            {event.subText}
+                                            {news.subText}
                                         </span>
                                     </p>
                                 </div>
@@ -78,4 +78,5 @@ export default function News() {
             </div>
         </div>
     );
-}
+};
+export default News;
