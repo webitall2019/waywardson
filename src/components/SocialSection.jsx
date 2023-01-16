@@ -54,7 +54,11 @@ export default function SocialSection() {
                 {apps.map((app, index) => {
                     return (
                         <li key={index + Math.random()}>
-                            <a href={app.href} target="blank" className="">
+                            <a
+                                href={app.href}
+                                target="blank"
+                                className="d-block"
+                            >
                                 <img src={app.logo} alt="app logo" />
                             </a>
                         </li>

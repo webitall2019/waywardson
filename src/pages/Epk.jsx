@@ -15,6 +15,13 @@ import riderIcon2 from "../assets/img/icons/rider-icon-2.svg";
 import riderIcon3 from "../assets/img/icons/rider-icon-3.svg";
 import riderIcon4 from "../assets/img/icons/rider-icon-4.svg";
 import riderIcon5 from "../assets/img/icons/rider-icon-5.svg";
+import songOne from "../assets/music/coi-pa4ka.mp3";
+import songTwo from "../assets/music/Король и Шут - Лесник.mp3";
+import "react-h5-audio-player/lib/styles.css";
+import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import Navbar from "../components/navBar";
+import { AnimationOnScroll } from "react-animation-on-scroll";
+import Footer from "../components/Footer";
 
 export default function Epk() {
     let person = [
@@ -23,7 +30,6 @@ export default function Epk() {
         { name: '"CB" Brown', role: "Bass/Vox", image: bass },
         { name: "Jeff Siegel", role: "Drums/Percussion", image: drums },
     ];
-
     let riderList = [
         {
             riderName: "Production/Tech Rider",
@@ -55,19 +61,29 @@ export default function Epk() {
         {
             songName: "WHY DO YOU LOVE ME SO GOOD",
             author: "Rick Jones",
+            songShortText:
+                "Checkout the new single 'Why Do You Love Me So Good' by Wayward Son front-man Rick Jones! Released under our Record Label Emanant Music!Available Now For Purchase! You can hear it live at all of our upcoming shows! Enjoy!",
+            songSrc: songOne,
         },
         {
             songName: "WHY DO YOU LOVE ME SO GOOD",
             author: "Rick Jones",
+            songShortText:
+                "Checkout the new single 'Why Do You Love Me So Good' by Wayward Son front-man Rick Jones! Released under our Record Label Emanant Music!Available Now For Purchase! You can hear it live at all of our upcoming shows! Enjoy!",
+            songSrc: songTwo,
         },
     ];
+
     return (
         <div>
+            <Navbar />
             <div className="container px-4 mx-auto max-w-lg lg:max-w-4xl pt-10 lg:pt-16">
                 <div className="headline text-center ">
-                    <h1 className="uppercase font-extrabold text-3xl lg:text-5xl mb-4">
-                        Jim Lamon - Candidate for U.S. Senate in AZ.
-                    </h1>
+                    <AnimationOnScroll animateIn="animate__fadeIn" duration={2}>
+                        <h1 className="uppercase font-extrabold text-3xl lg:text-5xl mb-4">
+                            Jim Lamon - Candidate for U.S. Senate in AZ.
+                        </h1>
+                    </AnimationOnScroll>
                     <p className="text-text-white-contrast font-medium contrast-125 mb-6 max-w-3xl mx-auto">
                         As a born and raised Alabama boy who has lived in
                         Arizona for the last few decades, I invited Wayward Son
@@ -103,43 +119,53 @@ export default function Epk() {
             </div>
             <div className="logo-section relative">
                 <div className="shape absolute -left-5 md:left-0 bottom-0 w-24 md:w-1/6">
-                    <img src={shape} alt="shape" />
+                    <AnimationOnScroll animateIn="animate__fadeInLeft">
+                        <img src={shape} alt="shape" />
+                    </AnimationOnScroll>
                 </div>
                 <div className="big-logo mt-12 mx-auto w-2/3 md:w-1/3">
-                    <img src={bigLogo} alt="Waywardson logo" />
+                    <AnimationOnScroll animateIn="animate__pulse">
+                        <img src={bigLogo} alt="Waywardson logo" />
+                    </AnimationOnScroll>
                 </div>
             </div>
             <div className="mt-12 lg:mt-24 lg:pb-20 relative overflow-hidden">
                 <div className="headline text-center px-4">
-                    <h2 className="uppercase font-extrabold text-xl md:text-4xl">
-                        GREASY, GRITTY, SOUTHERN FRIED ROCK
-                    </h2>
-                    <p className="px-4 inline-block mx-auto text-text-light-grey text-md lg:text-xl mt-4 mb-12 lg:w-3/4">
-                        Wayward Son delivers a greasy, gritty, soulful sound by
-                        blending country and southern rock music, and giving it
-                        a massive kick in the pants! There's a legacy connecting
-                        the swagger of Lynyrd Skynyrd & the Allman Brothers, the
-                        rustic expansiveness of the Marshall Tucker Band, The
-                        Outlaws, The Eagles & more! So come experience the
-                        rough-and-ready mix of raw guitar power, shuffling
-                        grooves, soulful acoustic ballads & lump in your throat
-                        vocals, and see what this band is all about!
-                        <br />
-                        <br />
-                        Wayward Son are hittin' the road touring their new tunes
-                        along with their high-energy Southern Rock show in a
-                        town near you! Check out some of their featured tunes
-                        below including the title track to their upcoming music
-                        video "Why Do You Love Me So Good", set for national
-                        release soon!
-                    </p>
+                    <AnimationOnScroll animateIn="animate__fadeInDownBig">
+                        <h2 className="uppercase font-extrabold text-xl md:text-4xl">
+                            GREASY, GRITTY, SOUTHERN FRIED ROCK
+                        </h2>
+
+                        <p className="px-4 inline-block mx-auto text-text-light-grey text-md lg:text-xl mt-4 mb-12 lg:w-3/4">
+                            Wayward Son delivers a greasy, gritty, soulful sound
+                            by blending country and southern rock music, and
+                            giving it a massive kick in the pants! There's a
+                            legacy connecting the swagger of Lynyrd Skynyrd &
+                            the Allman Brothers, the rustic expansiveness of the
+                            Marshall Tucker Band, The Outlaws, The Eagles &
+                            more! So come experience the rough-and-ready mix of
+                            raw guitar power, shuffling grooves, soulful
+                            acoustic ballads & lump in your throat vocals, and
+                            see what this band is all about!
+                            <br />
+                            <br />
+                            Wayward Son are hittin' the road touring their new
+                            tunes along with their high-energy Southern Rock
+                            show in a town near you! Check out some of their
+                            featured tunes below including the title track to
+                            their upcoming music video "Why Do You Love Me So
+                            Good", set for national release soon!
+                        </p>
+                    </AnimationOnScroll>
                 </div>
 
                 <div className="container px-4 ">
                     <div className="cards flex flex-wrap gap-4 lg:gap-8 justify-center">
                         {person.map((person, index) => {
                             return (
-                                <div
+                                <AnimationOnScroll
+                                    animateIn="animate__fadeIn"
+                                    duration={3}
                                     key={index + Math.random() * 100}
                                     className="card bg-text-dark-grey rounded-lg w-full md:w-[48%] lg:w-1/3 max-w-lg text-center p-10"
                                 >
@@ -156,7 +182,7 @@ export default function Epk() {
                                     <p className="text-base md:text-lg font-medium text-text-grey">
                                         {person.role}
                                     </p>
-                                </div>
+                                </AnimationOnScroll>
                             );
                         })}
                     </div>
@@ -165,21 +191,80 @@ export default function Epk() {
                     <img src={shapeSmall} alt="shape" className="w-full" />
                 </div>
             </div>
-            <Tunes songs={songs} />
-            <Shows />
-            <div className="text-center">
-                <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center my-10">
-                    RIDER & STAGE PLOT
-                </h2>
-                <p className="text-lg md:text-xl text-text-white-contrast">
-                    For All Production, Stage, Tech & Travel Rider Info, Please
-                    Download Below.
-                </p>
+            {/* <Tunes songs={songs} /> */}
+            <div className="px-4 my-6 lg:my-12 max-w-7xl mx-auto" id="tunes">
+                <div className="container">
+                    <AnimationOnScroll animateIn="animate__fadeIn">
+                        <h3 className="text-4xl font-extrabold pb-6 border-b-[1px] border-[#ffffff20]">
+                            Tunes
+                        </h3>
+
+                        <div className="tunes lg:grid gap-3 grid-cols-2 mt-6">
+                            {songs.map((item, songIndex) => {
+                                return (
+                                    <AudioPlayer
+                                        key={songIndex + Math.random() + 100}
+                                        src={item.songSrc}
+                                        // onLoadStart={() =>
+                                        //     findAllPlayers(songIndex)
+                                        // }
+                                        // onPlay={(e) => muteOtherAudio(songIndex)}
+                                        layout="horizontal-reverse"
+                                        showJumpControls={false}
+                                        customVolumeControls={[]}
+                                        customAdditionalControls={[]}
+                                        customProgressBarSection={[
+                                            RHAP_UI.PROGRESS_BAR,
+                                            RHAP_UI.CURRENT_TIME,
+                                            <div className="px-2">/ </div>,
+                                            RHAP_UI.DURATION,
+                                        ]}
+                                        header={
+                                            <div>
+                                                <h1 className="uppercase font-medium text-lg">
+                                                    {item.songName}
+                                                    {/* some song name */}
+                                                </h1>
+                                                <p className="text-[#8B8B8C] text-xs">
+                                                    {item.author}
+                                                    {/* some author */}
+                                                </p>
+                                            </div>
+                                        }
+                                        footer={
+                                            <div>
+                                                <p className="text-lg text-text-grey">
+                                                    {item.songShortText}
+                                                </p>
+                                            </div>
+                                        }
+                                    />
+                                );
+                            })}
+                        </div>
+                    </AnimationOnScroll>
+                </div>
+            </div>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={2}>
+                <Shows />
+            </AnimationOnScroll>
+            <div className="text-center px-4 mt-10 lg:mt-28">
+                <AnimationOnScroll animateIn="animate__fadeIn" duration={2}>
+                    <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center my-10">
+                        RIDER & STAGE PLOT
+                    </h2>
+                    <p className="text-lg md:text-xl text-text-white-contrast">
+                        For All Production, Stage, Tech & Travel Rider Info,
+                        Please Download Below.
+                    </p>
+                </AnimationOnScroll>
             </div>
             <div className="riders-list w-full px-4 md:flex gap-6 lg:gap-10 justify-center flex-wrap mt-6">
                 {riderList.map((rider, index) => {
                     return (
-                        <div
+                        <AnimationOnScroll
+                            animateIn="animate__fadeIn"
+                            duration={2}
                             key={index + Math.random() + 100}
                             className="bg-card-background mb-4 md:mb-0 px-4 py-6 rounded-lg flex basis-[30%] flex-shrink-0 flex-col justify-between"
                         >
@@ -195,7 +280,7 @@ export default function Epk() {
                             >
                                 {rider.riderName}
                             </a>
-                        </div>
+                        </AnimationOnScroll>
                     );
                 })}
             </div>
@@ -253,6 +338,7 @@ export default function Epk() {
                 </div>
             </div>
             <SocialSection />
+            <Footer />
         </div>
     );
 }

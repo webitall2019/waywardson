@@ -1,29 +1,34 @@
-import React, { useEffect, useRef } from "react";
-import song from "../assets/music/coi-pa4ka.mp3";
-import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import React, { useEffect, useRef, useState } from "react";
 import "react-h5-audio-player/lib/styles.css";
-import playBtn from "../assets/img/icons/play-icon.svg";
-import pauseBtn from "../assets/img/icons/pause-icon.svg";
-import test from "../assets/img/big-logo.png";
-export default function Tunes({ title, songs }) {
-    const iframeRef = useRef(null);
+import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 
-    useEffect(() => {}, []);
+export default function Tunes({ songs }) {
+    let [isPlaying, setIsPlaying] = useState(false);
+    let [allPlayers, setAllPlayers] = useState([]);
+    const [currentSong, setCurrentSong] = useState(null);
+
+    const muteOtherAudio = (songIndex) => {
+        setCurrentSong(songIndex);
+    };
+    const findAllPlayers = (item) => {
+        allPlayers.push(item);
+    };
 
     return (
-        <div className="px-4 my-6 max-w-7xl mx-auto">
+        <div className="px-4 my-6 lg:my-12 max-w-7xl mx-auto" id="tunes">
             <div className="container">
                 <h3 className="text-4xl font-extrabold pb-6 border-b-[1px] border-[#ffffff20]">
-                    {title ? title : "Tunes"}
+                    Tunes
                 </h3>
 
                 <div className="tunes lg:grid gap-3 grid-cols-2 mt-6">
-                    {songs.map((item, index) => {
+                    {songs.map((item, songIndex) => {
                         return (
                             <AudioPlayer
-                                key={index + Math.random() + 100}
-                                src={song}
-                                onPlay={(e) => console.log("onPlay")}
+                                key={songIndex + Math.random() + 100}
+                                src={item.songSrc}
+                                onLoadStart={() => findAllPlayers(songIndex)}
+                                // onPlay={(e) => muteOtherAudio(songIndex)}
                                 layout="horizontal-reverse"
                                 showJumpControls={false}
                                 customVolumeControls={[]}
@@ -37,12 +42,19 @@ export default function Tunes({ title, songs }) {
                                 header={
                                     <div>
                                         <h1 className="uppercase font-medium text-lg">
-                                            {/* {item.songName} */}
-                                            some song name
+                                            {item.songName}
+                                            {/* some song name */}
                                         </h1>
                                         <p className="text-[#8B8B8C] text-xs">
-                                            {/* {item.author} */}
-                                            some author
+                                            {item.author}
+                                            {/* some author */}
+                                        </p>
+                                    </div>
+                                }
+                                footer={
+                                    <div>
+                                        <p className="text-lg text-text-grey">
+                                            {item.songShortText}
                                         </p>
                                     </div>
                                 }

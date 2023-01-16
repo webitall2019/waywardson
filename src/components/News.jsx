@@ -2,7 +2,7 @@ import React from "react";
 import eventOne from "../assets/img/3-column cards/news-1.svg";
 import eventSecond from "../assets/img/3-column cards/news-2.svg";
 import eventThird from "../assets/img/3-column cards/news-3.svg";
-
+import { AnimationOnScroll } from "react-animation-on-scroll";
 const News = () => {
     let newsList = [
         {
@@ -27,21 +27,24 @@ const News = () => {
     return (
         <div className="mt-24">
             <div className="headline text-center">
-                <h2 className="uppercase font-extrabold text-xl md:text-4xl">
-                    Big news
-                </h2>
-                <p className="px-4 lg:w-3/5 inline-block mx-auto text-text-light-grey text-md lg:text-xl mt-4 mb-4">
-                    Vitae aliquet nec ullamcorper sit amet risus nullam eget
-                    felis semper quis lectus nulla at volutpat diam ut venenatis
-                    tellus—in ornare.
-                </p>
+                <AnimationOnScroll animateIn="animate__fadeIn">
+                    <h2 className="uppercase font-extrabold text-xl md:text-4xl">
+                        Big news
+                    </h2>
+                    <p className="px-4 lg:w-3/5 inline-block mx-auto text-text-light-grey text-md lg:text-xl mt-4 mb-4">
+                        Vitae aliquet nec ullamcorper sit amet risus nullam eget
+                        felis semper quis lectus nulla at volutpat diam ut
+                        venenatis tellus—in ornare.
+                    </p>
+                </AnimationOnScroll>
             </div>
             <div className="mt-20">
                 <div className="container px-4">
                     <div className="lg:flex gap-x-4 ">
                         {newsList.map((news, index) => (
-                            <div
+                            <AnimationOnScroll
                                 key={index}
+                                animateIn="animate__fadeIn"
                                 className="max-w-xl mx-auto mt-16 lg:mb-0 rounded-lg bg-text-dark-grey p-6 pt-0 lg:flex-1 flex flex-col"
                             >
                                 <div className="img-wrap mx-auto text-center xl:w-[300px] h-[190px]">
@@ -62,18 +65,20 @@ const News = () => {
                                         </span>
                                     </p>
                                 </div>
-                            </div>
+                            </AnimationOnScroll>
                         ))}
                     </div>
                 </div>
                 <div className="font-medium justify-center inline-flex w-full mt-24">
-                    <a
-                        href="https://www.paypal.com/donate/?hosted_button_id=3M697LQ66YTU4"
-                        rel="nofollow"
-                        className="bg-cta-blue p-4 hover:bg-indigo-700 rounded-sm"
-                    >
-                        Donate here
-                    </a>
+                    <AnimationOnScroll animateIn="animate__pulse">
+                        <a
+                            href="https://www.paypal.com/donate/?hosted_button_id=3M697LQ66YTU4"
+                            rel="nofollow"
+                            className="bg-cta-blue p-4 hover:bg-indigo-700 rounded-sm"
+                        >
+                            Donate here
+                        </a>
+                    </AnimationOnScroll>
                 </div>
             </div>
         </div>

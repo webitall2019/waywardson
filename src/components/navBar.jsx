@@ -1,15 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import logo from "../assets/img/logo.svg";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import bgPattern from "../assets/img/background/nav-pattern.png";
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-}
 
-export default function Navbar(props) {
-    let [state, setState] = useState(false);
+export default function Navbar() {
+    let [state, setState] = useState(0);
 
     // const btnRef = useRef(null);
     // let closeMenu = () => {
@@ -20,10 +17,9 @@ export default function Navbar(props) {
     //     window.scrollTo(0, showsRef.current.offsetHeight);
     // };
     const scrollElemHandler = () => {
-        console.log("click");
         // scrollToMyRef();
     };
-    console.log(props);
+
     return (
         <Disclosure as="nav" className="">
             {({ open }) => (
@@ -33,12 +29,12 @@ export default function Navbar(props) {
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
                                     <img
-                                        className="block h-16 w-auto lg:hidden"
+                                        className="block h-16 md:h-20 w-auto lg:hidden"
                                         src={logo}
                                         alt="waywardson"
                                     />
                                     <img
-                                        className="hidden h-16 w-auto lg:block"
+                                        className="hidden h-16 md:h-20 w-auto lg:block"
                                         src={logo}
                                         alt="waywardson"
                                     />
@@ -52,26 +48,26 @@ export default function Navbar(props) {
                                     >
                                         Home
                                     </NavLink>
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="/epk/tunes"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
                                     >
-                                        Music & More
-                                    </a>
+                                        Tunes
+                                    </Link>
                                     <a
                                         href="#contact"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
                                     >
                                         Contact
                                     </a>
-                                    <NavLink
+                                    <a
                                         onClick={scrollElemHandler}
                                         // ref={showsRef}
-                                        to="/epk/#shows"
+                                        href="/epk/#shows"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
                                     >
                                         Shows
-                                    </NavLink>
+                                    </a>
                                     <NavLink
                                         to="/epk"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-nav-item-light hover:bg-red-600 hover:text-white"
@@ -131,10 +127,10 @@ export default function Navbar(props) {
 
                             <Disclosure.Button
                                 as="a"
-                                href="#music&more"
+                                href="#tunes"
                                 className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                             >
-                                Music & More
+                                Tunes
                             </Disclosure.Button>
                             <Disclosure.Button
                                 as="a"
@@ -143,18 +139,21 @@ export default function Navbar(props) {
                             >
                                 Contact
                             </Disclosure.Button>
-                            <NavLink
-                                to="/epk#shows"
+                            <Disclosure.Button
+                                as="a"
+                                href="/epk#shows"
                                 className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
                             >
                                 Shows
-                            </NavLink>
+                            </Disclosure.Button>
+
                             <NavLink
                                 to="/epk"
-                                className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
+                                className="block w-full rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
                             >
                                 EPK
                             </NavLink>
+
                             <NavLink
                                 to="/merch"
                                 className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white hover:bg-cta-blue hover:text-white"
