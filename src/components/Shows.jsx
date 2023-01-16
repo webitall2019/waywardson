@@ -2,26 +2,31 @@ import react, { useState, useEffect, useRef, forwardRef } from "react";
 import axios from "axios";
 import Popup from "reactjs-popup";
 import shareIcon from "../assets/img/icons/share-icon.svg";
+
 const Shows = forwardRef((props, showsRef) => {
-    const [events, setEvents] = useState([]);
+    const [shows, setShows] = useState([]);
 
     let getEvents = async () => {
         await axios
-            .get("/DB.json?events")
-            .then((response) => setEvents(response.data.events));
+            .get("/DB.json?shows")
+            .then((response) => setShows(response.data.shows));
     };
 
     useEffect(() => {
         getEvents();
-    }, [events.length]);
+    }, [shows.length]);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 mt-10" ref={showsRef} id="shows">
+        <div
+            className="max-w-7xl mx-auto px-4 mt-10 lg:mt-28"
+            ref={showsRef}
+            id="shows"
+        >
             <h2 className="uppercase font-extrabold text-xl md:text-4xl text-center mb-8">
                 UPCOMING SHOWS
             </h2>
             <div className="show-cards md:grid  md:grid-cols-3 gap-5 content-around">
-                {events.map((event, index) => {
+                {shows.map((event, index) => {
                     return (
                         <div
                             key={index + Math.random() * 100}
@@ -34,13 +39,12 @@ const Shows = forwardRef((props, showsRef) => {
                                 {event.describe}
                             </p>
 
-                            <Popup
-                                trigger={
-                                    <div className="card-footer flex items-center justify-between self-end text-[#8B8B8C]">
-                                        <span className="uppercase">
-                                            {event.date}
-                                        </span>
+                            <div className="card-footer flex items-center justify-between self-end text-[#8B8B8C]">
+                                <span className="uppercase">{event.date}</span>
+                                <Popup
+                                    trigger={
                                         <div
+                                            className="cursor-pointer"
                                             onClick={() =>
                                                 navigator.clipboard.writeText(
                                                     event.share
@@ -49,14 +53,14 @@ const Shows = forwardRef((props, showsRef) => {
                                         >
                                             <img src={shareIcon} alt="icon" />
                                         </div>
+                                    }
+                                    position="right center"
+                                >
+                                    <div className="text-black">
+                                        Popup content here !!
                                     </div>
-                                }
-                                position="right center"
-                            >
-                                <div className="text-black">
-                                    Popup content here !!
-                                </div>
-                            </Popup>
+                                </Popup>
+                            </div>
                         </div>
                     );
                 })}

@@ -24,8 +24,7 @@ export default function Music() {
             name: "Korol",
             singer: "Korol i shut",
             cover: songCover,
-            musicSrc:
-                "https://waywardsonmusic.com/track/3278412/the-best-of-me.mp3",
+            musicSrc: song,
         },
     ];
     return (

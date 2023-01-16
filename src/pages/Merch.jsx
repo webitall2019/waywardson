@@ -11,6 +11,8 @@ import shinees from "../assets/img/icons/Paper-Upload.svg";
 import heart from "../assets/img/icons/Bookmark.svg";
 import ContactSection from "../components/ContactSection";
 import SocialSection from "../components/SocialSection";
+import Footer from "../components/Footer";
+
 export default function Merch() {
     let images = [merch, merch2, merch5, merch10];
     const [toggler, setToggler] = useState(false);
@@ -144,6 +146,7 @@ export default function Merch() {
             </div>
             <SocialSection />
             <ContactSection />
+            <Footer />
         </>
     );
 }
